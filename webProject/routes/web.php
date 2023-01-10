@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>'/offer'],function(){
+    Route::get('setoffer', [App\Http\Controllers\crudController::class, 'setoffer'])->name('offer.setoffer');
+    Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offer.getoffer');
+});
 
 // composer require laravel/fortify
 // Dawar 3ala laravel fortify f google
