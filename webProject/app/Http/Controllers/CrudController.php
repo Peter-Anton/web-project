@@ -9,11 +9,11 @@ class CrudController extends Controller
 {
 public  function __construct()
 {
-
 }
 public function getOffers()
 {
-    return Offer::select('id', 'name','details')->get();
+    $offers=Offer::select('id','name','price','details')->get();
+    return view('offers.Offerview',compact('offers'));
 }
 
 }

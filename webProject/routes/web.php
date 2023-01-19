@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['prefix'=>'/offer'],function(){
-    Route::get('setoffer', [App\Http\Controllers\crudController::class, 'setoffer'])->name('offer.setoffer');
-    Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offer.getoffer');
+Route::group(['prefix'=>'/offers'],function(){
+    Route::get('setoffer', [App\Http\Controllers\crudController::class, 'setoffer'])->name('offers.setoffer');
+    Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offers.getoffer');
 });
 
 // composer require laravel/fortify
