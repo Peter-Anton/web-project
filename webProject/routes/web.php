@@ -20,6 +20,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'/offers'],function(){
     Route::get('setoffer', [App\Http\Controllers\crudController::class, 'setoffer'])->name('offers.setoffer');
     Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offers.getoffer');
+    Route::post('deleteoffer', [App\Http\Controllers\crudController::class, 'deleteOffer'])->name('offers.deleteoffer');
 });
 
 // composer require laravel/fortify
