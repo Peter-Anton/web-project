@@ -17,6 +17,7 @@ class CrudController extends Controller
         return view('offers.Offerview', compact('offers'));
     }
 
+
     public function deleteOffer(Request $request)
     {
         $offer = Offer::find($request->id)->delete();

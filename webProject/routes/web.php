@@ -22,6 +22,9 @@ Route::group(['prefix'=>'/offers'],function(){
     Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offers.getoffer');
     Route::post('deleteoffer', [App\Http\Controllers\crudController::class, 'deleteOffer'])->name('offers.deleteoffer');
 });
+Route::group(['namespace'=>'Dashboard','middleware'=>'auth:admin'],function (){
 
+
+});
 // composer require laravel/fortify
 // Dawar 3ala laravel fortify f google
