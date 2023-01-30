@@ -885,7 +885,7 @@
     },
 
     /**
-     * Ensure an admin submenu is within the visual viewport.
+     * Ensure an admins submenu is within the visual viewport.
      * @param {jQuery} $menuItem The parent menu item containing the submenu.
      */
     adjustSubmenu: function ( $menuItem ) {
@@ -918,7 +918,7 @@
       else{
         topPos = menutop + $menuItem.height() + borderWidth;
       }
-      
+
       if($body.data('menu') == 'vertical-content-menu'){
         ul.addClass('menu-popout').appendTo('.main-menu-content').css({
           'top' : topPos,

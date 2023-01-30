@@ -43,7 +43,7 @@ return [
         'Admin'=>[
 
             'driver'=>'session',
-            'provider'=>'admin',
+            'provider'=>'admins',
         ]
     ],
 

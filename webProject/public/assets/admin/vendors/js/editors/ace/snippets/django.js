@@ -91,17 +91,17 @@ snippet model\n\
 			return ('${7:view_or_url_name}' ${8})\n\
 \n\
 snippet modeladmin\n\
-	class ${1:ModelName}Admin(admin.ModelAdmin):\n\
+	class ${1:ModelName}Admin(admins.ModelAdmin):\n\
 		${2}\n\
 	\n\
-	admin.site.register($1, $1Admin)\n\
+	admins.site.register($1, $1Admin)\n\
 	\n\
 snippet tabularinline\n\
-	class ${1:ModelName}Inline(admin.TabularInline):\n\
+	class ${1:ModelName}Inline(admins.TabularInline):\n\
 		model = $1\n\
 \n\
 snippet stackedinline\n\
-	class ${1:ModelName}Inline(admin.StackedInline):\n\
+	class ${1:ModelName}Inline(admins.StackedInline):\n\
 		model = $1\n\
 \n\
 snippet r2r\n\

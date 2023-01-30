@@ -9,7 +9,7 @@ var DocCommentHighlightRules = function() {
         "start" : [ {
             token : "comment.doc.tag",
             regex : "@[\\w\\d_]+" // TODO: fix email addresses
-        }, 
+        },
         DocCommentHighlightRules.getTagRule(),
         {
             defaultToken : "comment.doc",
@@ -165,7 +165,7 @@ var PerlHighlightRules = function() {
         ],
         "block_comment": [
             {
-                token: "comment.doc", 
+                token: "comment.doc",
                 regex: "^=cut\\b",
                 next: "start"
             },
@@ -397,7 +397,7 @@ var JsonHighlightRules = function() {
             }
         ]
     };
-    
+
 };
 
 oop.inherits(JsonHighlightRules, TextHighlightRules);
@@ -699,8 +699,8 @@ var JavaScriptHighlightRules = function(options) {
             }
         ]
     };
-    
-    
+
+
     if (!options || !options.noES6) {
         this.$rules.no_regex.unshift({
             regex: "[{}]", onMatch: function(val, state, stack) {
@@ -735,14 +735,14 @@ var JavaScriptHighlightRules = function(options) {
                 defaultToken: "string.quasi"
             }]
         });
-        
+
         if (!options || !options.noJSX)
             JSX.call(this);
     }
-    
+
     this.embedRules(DocCommentHighlightRules, "doc-",
         [ DocCommentHighlightRules.getEndRule("no_regex") ]);
-    
+
     this.normalizeRules();
 };
 
@@ -793,8 +793,8 @@ function JSX() {
         {defaultToken: "string"}
     ];
     this.$rules.jsxAttributes = [{
-        token : "meta.tag.punctuation.tag-close.xml", 
-        regex : "/?>", 
+        token : "meta.tag.punctuation.tag-close.xml",
+        regex : "/?>",
         onMatch : function(value, currentState, stack) {
             if (currentState == stack[0])
                 stack.shift();
@@ -809,7 +809,7 @@ function JSX() {
             return [{type: this.token, value: value}];
         },
         nextState: "jsx"
-    }, 
+    },
     jsxJsRule,
     comments("jsxAttributes"),
     {
@@ -885,7 +885,7 @@ var JavaScriptHighlightRules = require("./javascript_highlight_rules").JavaScrip
 
 var PgsqlHighlightRules = function() {
     var keywords = (
-        "abort|absolute|abstime|access|aclitem|action|add|admin|after|aggregate|all|also|alter|always|" +
+        "abort|absolute|abstime|access|aclitem|action|add|admins|after|aggregate|all|also|alter|always|" +
         "analyse|analyze|and|any|anyarray|anyelement|anyenum|anynonarray|anyrange|array|as|asc|" +
         "assertion|assignment|asymmetric|at|attribute|authorization|backward|before|begin|between|" +
         "bigint|binary|bit|bool|boolean|both|box|bpchar|by|bytea|cache|called|cascade|cascaded|case|cast|" +
@@ -1474,7 +1474,7 @@ oop.inherits(Mode, TextMode);
     this.lineCommentStart = "--";
     this.blockComment = {start: "/*", end: "*/"};
 
-    this.getNextLineIndent = function(state, line, tab) { 
+    this.getNextLineIndent = function(state, line, tab) {
         if (state == "start" || state == "keyword.statementEnd") {
             return "";
         } else {
