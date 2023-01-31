@@ -13,8 +13,18 @@ class HomeController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    public function index()
+    public function login(Request $request){
+                $remember_me= $request->has('remember_me');
+
+        if (auth()->guard('admin')->attempt(['email'=>$request->input('email'),'password'=>$request->input('password')],$remember_me)){
+            return redirect()->route('admins.dashboard');
+        }
+        return redirect()->back()->with('error','there is a problem in your data');
+    }
+
+    public function loginView()
     {
+
         return view('admins.Login');
     }
 }

@@ -22,7 +22,13 @@ Route::group(['prefix'=>'/offers'],function(){
     Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offers.getoffer');
     Route::post('deleteoffer', [App\Http\Controllers\crudController::class, 'deleteOffer'])->name('offers.deleteoffer');
 });
-Route::group(['namespace'=>'Admin','prefix'=>'/admins'],function (){
-Route::get('home', [App\Http\Controllers\Dashboard\HomeController::class, 'index'])->name('admins.home');
+Route::group(['prefix'=>'/adminslog','middleware'=>'auth:admin','namespace'=>'dashboard'],function(){
+    Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class])->name('admins.dashboard');
+});
 
+
+
+Route::group(['prefix'=>'/admins','middleware'=>'guest:admin'],function (){
+    Route::get('login', [App\Http\Controllers\Dashboard\HomeController::class, 'loginView'])->name('admins.loginview');
+    Route::post('login', [App\Http\Controllers\Dashboard\HomeController::class,''])->name('admin.login');
 });

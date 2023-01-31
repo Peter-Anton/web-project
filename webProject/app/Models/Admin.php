@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class Admin extends Model
+class Admin extends Authenticate
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
     protected $guarded=[];
     public $timestamps = true;
 }
