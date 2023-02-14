@@ -33,3 +33,4 @@ Route::group(['prefix'=>'/admin'],function(){
         Route::get('edit/{offer_id}',[App\Http\Controllers\OfferController::class, 'edit'])->name('offers.edit');
 
     });
+Route::get('laracast',[App\Http\Controllers\CrudController::class,'getGridView']);

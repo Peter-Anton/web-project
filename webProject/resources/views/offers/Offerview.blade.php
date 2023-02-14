@@ -29,7 +29,7 @@
                 <td>{{$offer -> description}}</td>
                 <td><img  style="width: 120px; height: 120px;" src="{{asset('images/offers/'.$offer->photo)}}" alt=""></td>
                 <td>
-                    <a href="#" offer_id="{{$offer -> id}}"    class="delete_btn1 btn btn-danger"> delete</a>
+                    <a href="" offer_id1="{{$offer -> id}}"    class="delete_btn1 btn btn-danger"> delete</a>
                 </td>
             </tr>
         @endforeach
@@ -42,7 +42,7 @@
     <script>
         $(document).on('click', '.delete_btn1', function (e) {
             e.preventDefault();
-            let offer_id = $(this).attr('offer_id');
+            var offer_id = $(this).attr('offer_id1');
             $.ajax({
                 type: 'post',
                 url: "{{route('offers.delete')}}",
@@ -56,8 +56,9 @@
                         $('#success_msg').show();
                     }
                     $('.offerRow'+data.id).remove();
-                }, error: function (reject) {
+                },
 
+                error: function (reject) {
                 }
             });
         });
