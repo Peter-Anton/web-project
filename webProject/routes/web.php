@@ -17,13 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['prefix'=>'/offers'],function(){
-    Route::get('getoffer', [App\Http\Controllers\crudController::class, 'getOffers'])->name('offers.getoffer');
-});
+
 
 //  Route::post('adminLogin',[App\Http\Controllers\AdminController::class,'getAdminLogin'])->name('admin.login');
 
-    Route::group(['prefix'=>'/admin'],function(){
-        Route::get('create', [App\Http\Controllers\crudController::class, 'create'])->name('offers.create');
-        Route::post('store', [App\Http\Controllers\crudController::class, 'store'])->name('offers.store');
+Route::group(['prefix'=>'/client'],function(){
+    Route::get('all', [App\Http\Controllers\OfferController::class, 'getAlloffers'])->name('offers.all');
+    Route::post('delete',[App\Http\Controllers\OfferController::class, 'delete'])->name('offers.delete');
+});
+
+
+Route::group(['prefix'=>'/admin'],function(){
+        Route::get('create', [App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
+        Route::post('store', [App\Http\Controllers\OfferController::class, 'store'])->name('offers.store');
+        Route::get('edit/{offer_id}',[App\Http\Controllers\OfferController::class, 'edit'])->name('offers.edit');
+
     });

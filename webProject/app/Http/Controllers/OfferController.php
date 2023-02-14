@@ -6,18 +6,9 @@ use App\Http\Requests\OfferRequest;
 use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
 use App\Models\Offer;
-class CrudController extends Controller
+class OfferController extends Controller
 {
     use OfferTrait;
-    public function __construct()
-    {
-    }
-
-    public function getOffers()
-    {
-        $offers = Offer::select('id', 'name', 'price', 'details')->get();
-        return view('offers.Offerview', compact('offers'));
-    }
     public function create()
     {
         return view('offers.create');
@@ -44,19 +35,25 @@ class CrudController extends Controller
             ]);
 
     }
-    public function deleteOffer(Request $request)
+    public function delete(Request $request)
     {
-        $offer = Offer::find($request->id)->delete();
-        if ($offer) {
-            return response()->json([
-                'status' => true,
-                'msg' => 'the offer deleted successfully',
-            ]);
-        } else {
-            return response()->json([
-                'status' => false,
-                'msg' => 'no offer with this id',
-            ]);
-        }
+        $offer = Offer::query()->find($request->id);
+        if (!$offer)
+            return redirect()->back(['error'=>'the offer doesnt exist']);
+        $offer->delete();
+        return response()->json([
+            'status' => true,
+            'msg' => 'the offer deleted successfully',
+        ]);
+    }
+    public function getAlloffers()
+    {
+        $offers = Offer::query()->select('id',
+            'name',
+            'price',
+            'description',
+            'photo'
+        )->get();
+        return view('offers.Offerview', compact('offers'));
     }
 }

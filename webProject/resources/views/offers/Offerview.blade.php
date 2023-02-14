@@ -20,14 +20,16 @@
 
 
         @foreach($offers as $offer)
+
+
             <tr class="offerRow{{$offer -> id}}">
                 <th scope="row">{{$offer -> id}}</th>
                 <td>{{$offer -> name}}</td>
                 <td>{{$offer -> price}}</td>
-                <td>{{$offer -> details}}</td>
-                <td><img  style="width: 90px; height: 90px;" src="{{asset('images/offers/'.$offer->photo)}}" alt=""></td>
+                <td>{{$offer -> description}}</td>
+                <td><img  style="width: 120px; height: 120px;" src="{{asset('images/offers/'.$offer->photo)}}" alt=""></td>
                 <td>
-                    <a href="" offer_id="{{$offer -> id}}"  class="delete_btn1 btn btn-danger"> delete   </a>
+                    <a href="#" offer_id="{{$offer -> id}}"    class="delete_btn1 btn btn-danger"> delete</a>
                 </td>
             </tr>
         @endforeach
@@ -40,10 +42,10 @@
     <script>
         $(document).on('click', '.delete_btn1', function (e) {
             e.preventDefault();
-            const offer_id = $(this).attr('offer_id');
+            let offer_id = $(this).attr('offer_id');
             $.ajax({
                 type: 'post',
-                url: "{{route('offers.deleteoffer')}}",
+                url: "{{route('offers.delete')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
                     'id' :offer_id
