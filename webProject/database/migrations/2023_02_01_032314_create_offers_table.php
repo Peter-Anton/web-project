@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id()->unique()->autoIncrement();
             $table->string('name');
             $table->string('description');
-            $table->foreignId('offer_category_id')->constrained('offer_categories')->onDelete('cascade');
+            $table->foreignId('offer_category_id');
             $table->integer('price');
             $table->string('photo');
             $table->timestamps();

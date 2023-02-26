@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class OfferCategory extends Model
 {
     protected $guarded=[];
+    use HasFactory;
+
     public function offers_link()
     {
-        return $this->hasMany('App\Models\Offer', 'offer_id', 'id');
+        return $this->hasMany(Offer::class, 'offer_category_id');
 
     }
 }

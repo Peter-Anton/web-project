@@ -10,7 +10,7 @@ class Offer extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\OfferCategory', 'offer_category_id', 'id');
+        return $this->belongsTo(OfferCategory::class);
     }
 }
 
