@@ -27,7 +27,8 @@ class OfferRequest extends FormRequest
             'name'=>'required|max:100',
             'price'=>'required|numeric',
             'description'=>'required',
-            'photo'=>'required|mimes:png,jpg,jpeg'
+            'photo'=>'required|mimes:png,jpg,jpeg',
+            'offer_category_id'=>'required|exists:offer_categories,id'
         ];
     }
     public function messages()
@@ -39,6 +40,8 @@ class OfferRequest extends FormRequest
             'price.numeric'=>'you must enter number',
             'description.required'=>'you must enter the name',
             'photo.required'=>'you must enter photo',
+            'offer_category_id.required'=>'you must enter the category',
+            'offer_category_id.exists'=>'the category doesnt exist',
                     ];
 
 

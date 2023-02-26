@@ -1,8 +1,9 @@
+@props(['offer'])
 <article
-    class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
+   {{$attributes->merge(['class'=>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl'])}} >
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 lg:mr-8">
-            <img src="./images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+            <img src="{{asset('images/offers/'.$offer->photo)}}" alt="Blog Post illustration" class="rounded-xl">
         </div>
 
         <div class="flex-1 flex flex-col justify-between">
@@ -19,24 +20,21 @@
 
                 <div class="mt-4">
                     <h1 class="text-3xl">
-                        This is a big title and it will look great on two or even three lines. Wooohoo!
+                        {{$offer->name}}
                     </h1>
 
                     <span class="mt-2 block text-gray-400 text-xs">
-                                        Published <time>1 day ago</time>
+                                        Published <time> {{$offer->created_at->diffForHumans()}} </time>
                                     </span>
                 </div>
             </header>
 
             <div class="text-sm mt-2">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    {{$offer->description}}
                 </p>
 
                 <p class="mt-4">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </p>
             </div>
 

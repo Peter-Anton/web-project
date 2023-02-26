@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('offer_categories', function (Blueprint $table) {
             $table->id()->unique()->autoIncrement();
             $table->string('name');
-            $table->string('description');
-            $table->foreignId('offer_category_id')->constrained('offer_categories')->onDelete('cascade');
-            $table->integer('price');
-            $table->string('photo');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('offer_categories');
     }
 };

@@ -34,3 +34,4 @@ Route::group(['prefix'=>'/admin'],function(){
 
     });
 Route::get('laracast',[App\Http\Controllers\CrudController::class,'getGridView']);
+Route::get('categories/{category:slug}',[App\Http\Controllers\CrudController::class,'getCategories']);
