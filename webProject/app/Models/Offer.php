@@ -21,13 +21,7 @@ class Offer extends Model
         $query->when($filter['search']?? false,fn($query,$search)=>$query->where('name','like','%'.$search.'%'));
         $query->when($filter['category']?? false,fn($query,$category)=>
         $query->whereHas('category',fn($query)=> $query->where('slug',$category))
-           //this is the same thing as whereHas
-//            ->whereExists(fn($query)=>
-//            $query
-//                ->from('categories')
-//                ->whereColumn('OfferCategory.id','offer.offer_category_id')
-//                ->where('OfferCategory',$category)
-            );
+              );
     }
 
 
@@ -35,5 +29,19 @@ class Offer extends Model
     {
         return $this->belongsTo(OfferCategory::class,'offer_category_id');
     }
+
+
+    public function company(){
+        return $this->belongsTo(Company::class,'offer_company_id');
+    }
+
 }
 
+
+#################################################################COMMENTS#################################################################
+//this is the same thing as whereHas
+//            ->whereExists(fn($query)=>
+//            $query
+//                ->from('categories')
+//                ->whereColumn('OfferCategory.id','offer.offer_category_id')
+//                ->where('OfferCategory',$category)

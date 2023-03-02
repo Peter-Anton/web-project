@@ -58,6 +58,13 @@
                         <small id="category_error" class="form-text text-danger"></small>
                     </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputPassword1"> category_id </label>
+                        <input type="text" class="form-control" name="offer_company_id"
+                               placeholder="offer_company_id">
+                        <small id="company_error" class="form-text text-danger"></small>
+                    </div>
+
                     <button id="save_offer" class="btn btn-primary">Save Offer</button>
                 </form>
             </div>
@@ -74,7 +81,8 @@
             $('#price_error').text('');
             $('#details_error').text('');
             $('#success_msg').hide();
-            $('#category_id').text('');
+            $('#category_error').text('');
+            $('#company_error').text('');
 
             var formData = new FormData($('#offerForm')[0]);
             $.ajax({
