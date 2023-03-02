@@ -3,15 +3,14 @@
    {{$attributes->merge(['class'=>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl'])}} >
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 lg:mr-8">
-            <img src="{{asset('images/offers/'.$offer->photo)}}" alt="Blog Post illustration" class="rounded-xl">
+            <img src="{{asset('/images/offers/'.$offer->photo)}}" alt="Blog Post illustration" class="rounded-xl">
         </div>
-
         <div class="flex-1 flex flex-col justify-between">
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
-                    <a href="{{$offer->category}}"
+                    <a href="#"
                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                       style="font-size: 10px">{{$categories->name}}</a>
+                       style="font-size: 10px">jjjj</a>
 
                     <a href="#"
                        class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
@@ -29,7 +28,7 @@
                 </div>
             </header>
 
-            <div class="text-sm mt-2">
+            <div class="text-sm mt-2 space-y-4">
                 <p>
                     {{$offer->description}}
                 </p>
@@ -40,7 +39,7 @@
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="./images/lary-avatar.svg" alt="Lary avatar">
+                    <img src="/images/laracast/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
                         <h5 class="font-bold">Lary Laracore</h5>
                         <h6>Mascot at Laracasts</h6>

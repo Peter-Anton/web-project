@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+Route::get('/', [App\Http\Controllers\CrudController::class,'getGridView'])->name('home');
 //  Route::post('adminLogin',[App\Http\Controllers\AdminController::class,'getAdminLogin'])->name('admin.login');
 
 Route::group(['prefix'=>'/client'],function(){
@@ -33,5 +28,3 @@ Route::group(['prefix'=>'/admin'],function(){
         Route::get('edit/{offer_id}',[App\Http\Controllers\OfferController::class, 'edit'])->name('offers.edit');
 
     });
-Route::get('laracast',[App\Http\Controllers\CrudController::class,'getGridView']);
-Route::get('categories/{category:slug}',[App\Http\Controllers\CrudController::class,'getCategories']);

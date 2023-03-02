@@ -45,7 +45,9 @@ class OfferController extends Controller
         return response()->json([
             'status' => true,
             'msg' => 'the offer deleted successfully',
+            'id'=>$offer->id,
         ]);
+
     }
     public function getAlloffers()
     {
