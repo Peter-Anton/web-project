@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('offer_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id()->unique()->autoIncrement();
             $table->string('name');
             $table->string('slug')->unique();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offer_categories');
+        Schema::dropIfExists('categories');
     }
 };

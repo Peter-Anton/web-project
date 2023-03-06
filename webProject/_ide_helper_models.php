@@ -46,7 +46,7 @@ namespace App\Models{
  * @property string $photo
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\OfferCategory|null $category
+ * @property-read \App\Models\Category|null $category
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Offer query()
@@ -64,7 +64,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\OfferCategory
+ * App\Models\Category
  *
  * @property int $id
  * @property string $name
@@ -73,14 +73,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Offer> $offers_link
  * @property-read int|null $offers_link_count
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory query()
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OfferCategory whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  */
 	class OfferCategory extends \Eloquent {}
 }

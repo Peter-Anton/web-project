@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1"> category_id </label>
+                        <label for="exampleInputPassword1"> company_id </label>
                         <input type="text" class="form-control" name="offer_company_id"
                                placeholder="offer_company_id">
                         <small id="company_error" class="form-text text-danger"></small>

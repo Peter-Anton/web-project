@@ -27,7 +27,7 @@ class Offer extends Model
 
     public function category()
     {
-        return $this->belongsTo(OfferCategory::class,'offer_category_id');
+        return $this->belongsTo(Category::class,'offer_category_id');
     }
 
 
@@ -43,5 +43,5 @@ class Offer extends Model
 //            ->whereExists(fn($query)=>
 //            $query
 //                ->from('categories')
-//                ->whereColumn('OfferCategory.id','offer.offer_category_id')
-//                ->where('OfferCategory',$category)
+//                ->whereColumn('Category.id','offer.offer_category_id')
+//                ->where('Category',$category)
