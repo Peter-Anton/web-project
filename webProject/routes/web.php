@@ -1,20 +1,18 @@
 <?php
 
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\Registercontroller;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [CrudController::class,'getGridView'])->name('home');
+Route::get('company/{company:name}',[CrudController::class,'getCompany'])->name('get-company');
+Route::get('category/{category:slug}',[CrudController::class,'getCategory'])->name('get-category');
 
-Route::get('/', [App\Http\Controllers\CrudController::class,'getGridView'])->name('home');
-//  Route::post('adminLogin',[App\Http\Controllers\AdminController::class,'getAdminLogin'])->name('admin.login');
+
+
+
+Route::get('register',[Registercontroller::class,'create'])->name('register');
+Route::post('store',[Registercontroller::class,'store'])->name('store');
 
 Route::group(['prefix'=>'/client'],function(){
     Route::get('all', [App\Http\Controllers\OfferController::class, 'getAlloffers'])->name('offers.all');

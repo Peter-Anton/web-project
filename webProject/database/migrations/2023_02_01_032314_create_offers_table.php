@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('offers', function (Blueprint $table) {
-            $table->id()->unique()->autoIncrement();
-            $table->string('name');
+            $table->id();
+            $table->string('name')->index();
             $table->string('description');
             $table->foreignId('offer_category_id');
             $table->foreignId('offer_company_id');
@@ -25,11 +25,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('offers');

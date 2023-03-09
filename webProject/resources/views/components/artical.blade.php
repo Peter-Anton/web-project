@@ -8,13 +8,10 @@
         <div class="flex-1 flex flex-col justify-between">
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
-                    <a href="\category\{{$offer->category->slug}}"
+                    <a href="/?category={{$offer->category->slug}}"
                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                        style="font-size: 10px">{{$offer->category->name}}</a>
 
-                    <a href="#"
-                       class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
-                       style="font-size: 10px">Updates</a>
                 </div>
 
                 <div class="mt-4">
@@ -37,12 +34,15 @@
                 </p>
             </div>
 
-            <footer class="flex justify-between items-center mt-8">
+            <footer class="flex justify-between items-center mt-6">
                 <div class="flex items-center text-sm">
                     <img src="/images/laracast/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold">Lary Laracore</h5>
-                        <h6>Mascot at Laracasts</h6>
+
+                        <h5 class="font-bold">
+                            <a href="/?company={{$offer->company->name}}">{{$offer->company->name}}
+                            </a>
+                        </h5>
                     </div>
                 </div>
 

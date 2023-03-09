@@ -2,37 +2,49 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Offer extends Model
 {
+    use HasFactory;
+
     protected $guarded = [];
 
     protected static function boot()
     {
         parent::boot();
 
-        static::deleting(function(Offer $offer) {
-            Storage::delete("images/offers/".$offer->photo);
+        static::deleting(function (Offer $offer) {
+            Storage::delete("images/offers/" . $offer->photo);
         });
     }
-    public function scopeFilter($query,array $filter){
-        $query->when($filter['search']?? false,fn($query,$search)=>$query->where('name','like','%'.$search.'%'));
-        $query->when($filter['category']?? false,fn($query,$category)=>
-        $query->whereHas('category',fn($query)=> $query->where('slug',$category))
-              );
+
+    public function scopeFilter($query, array $filter)
+    {
+        $query->when($filter['search'] ?? false, fn($query, $search) => $query->where(fn($query) => $query->where('name', 'like', '%' . $search . '%')
+            ->orWhere('description', 'like', '%' . $search . '%')
+        )
+        );
+
+        $query->when($filter['category'] ?? false, fn($query, $category) => $query->whereHas('category', fn($query) => $query->where('slug', $category))
+        );
+
+        $query->when($filter['company'] ?? false, fn($query, $company) => $query->whereHas('company', fn($query) => $query->where('name', $company))
+        );
     }
 
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'offer_category_id');
+        return $this->belongsTo(Category::class, 'offer_category_id');
     }
 
 
-    public function company(){
-        return $this->belongsTo(Company::class,'offer_company_id');
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'offer_company_id');
     }
 
 }

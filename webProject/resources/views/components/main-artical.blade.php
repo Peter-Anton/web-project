@@ -13,9 +13,7 @@
                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                        style="font-size: 10px">{{$offers->category->name}}</a>
 
-                    <a href="#"
-                       class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
-                       style="font-size: 10px">Updates</a>
+
                 </div>
 
                 <div class="mt-4">
@@ -33,7 +31,7 @@
 
             <div class="text-sm mt-2">
                 <p>
-               {{$offers->description}}
+                    {{$offers->description}}
                 </p>
             </div>
 
@@ -41,8 +39,10 @@
                 <div class="flex items-center text-sm">
                     <img src="/images/laracast/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
-                        <h5 class="font-bold">Lary Laracore</h5>
-                        <h6>Mascot at Laracasts</h6>
+                        <h5 class="font-bold">
+                            <a href="/?company={{$offers->company->name}}">{{$offers->company->name}}
+                            </a>
+                        </h5>
                     </div>
                 </div>
 
