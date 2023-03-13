@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\Registercontroller;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CrudController::class,'getGridView'])->name('home');
@@ -11,8 +12,13 @@ Route::get('category/{category:slug}',[CrudController::class,'getCategory'])->na
 
 
 
-Route::get('register',[Registercontroller::class,'create'])->name('register');
-Route::post('store',[Registercontroller::class,'store'])->name('store');
+Route::get('register',[Registercontroller::class,'create'])->name('register')->middleware('guest');
+Route::post('register',[Registercontroller::class,'store'])->name('store')->middleware('guest');
+Route::post('logout',[SessionController::class,"destroy"])->name('logout')->middleware('auth');
+Route::get('login',[SessionController::class,"login"])->name('login')->middleware('guest');
+Route::post('login',[SessionController::class,"store_login"])->name('login')->middleware('guest');
+
+
 
 Route::group(['prefix'=>'/client'],function(){
     Route::get('all', [App\Http\Controllers\OfferController::class, 'getAlloffers'])->name('offers.all');
