@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brief;
 use App\Models\Company;
 use App\Models\offer;
 use App\Models\Category;
@@ -28,6 +29,11 @@ class CrudController extends Controller
     public function getCompany(Company $company){
         return view('grid',[
             'offers'=>$company->offers
+        ]);
+    }
+    public function getBrief(Brief $brief){
+        return view('components.offer-brief',[
+            'offers'=>$brief->offer()
         ]);
     }
 }

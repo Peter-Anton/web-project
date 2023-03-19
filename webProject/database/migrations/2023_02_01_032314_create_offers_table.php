@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('offer_company_id');
             $table->integer('price');
             $table->string('photo');
+            $table->foreignId('offer_brief_id');
             $table->timestamps();
         });
     }

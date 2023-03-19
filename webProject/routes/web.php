@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CrudController::class,'getGridView'])->name('home');
 Route::get('company/{company:name}',[CrudController::class,'getCompany'])->name('get-company');
 Route::get('category/{category:slug}',[CrudController::class,'getCategory'])->name('get-category');
-
+Route::get('brief/{brief:slug}',[CrudController::class,'getBrief'])->name('get-brief');
 
 
 
