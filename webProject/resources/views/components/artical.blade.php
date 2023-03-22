@@ -47,30 +47,11 @@
                 </div>
 
                 <div class="hidden lg:block">
-                    <a href="#"
+                    <a href="/brief/{{$offer->brief->slug}}"
                        class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
                     >Read More</a>
                 </div>
             </footer>
         </div>
     </div>
-    <section class="col-span-8 col-start-5 mt-10">
-        <article class= "flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-4">
-        <div >
-            <img src="https://i.pravatar.cc/60" alt="" width="60" height="60">
-        </div>
-            <div>
-                <header>
-                    <h3 class="font-bold">
-                        <p class="text-xs">
-                            posted
-                            <time> 8 min ago</time>
-                        </p>
-                    </h3>
-                    hello there all my friends
-                </header>
-            </div>
-
-        </article>
-    </section>
 </article>

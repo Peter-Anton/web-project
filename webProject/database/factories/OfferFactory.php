@@ -26,7 +26,6 @@ class OfferFactory extends Factory
             "price" => $this->faker->numberBetween(1, 2000),
             "offer_category_id" => Category::factory(),
             "offer_company_id" => Company::factory(),
-            "offer_brief_id" => Brief::factory(),
             "photo" => "1676403038.png"
         ];
     }

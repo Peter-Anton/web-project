@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Brief;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Offer;
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Admin::factory()->create();
         for ($i = 0; $i < 10; $i++)
         {
-            Offer::factory()->create();
+            Offer::factory()->has(Brief::factory())->create();
         }
 
     }

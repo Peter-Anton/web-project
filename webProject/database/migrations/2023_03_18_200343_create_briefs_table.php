@@ -6,30 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('offer_briefs', function (Blueprint $table) {
+        Schema::create('briefs', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
             $table->string('title')->index();
             $table->text('excerpt');
             $table->text('body');
+            $table->foreignId('offer_id');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('offer_briefs');
+        Schema::dropIfExists('briefs');
     }
 };

@@ -46,12 +46,16 @@ class Offer extends Model
     {
         return $this->belongsTo(Company::class, 'offer_company_id');
     }
-    public function Brief()
+
+    public function brief()
     {
         return $this->hasOne(Brief::class, 'offer_id');
     }
 
 }
+
+
+
 
 #################################################################COMMENTS#################################################################
 //this is the same thing as whereHas
