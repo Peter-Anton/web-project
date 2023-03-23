@@ -33,7 +33,7 @@ class CrudController extends Controller
     }
     public function getBrief(Brief $brief){
         return view('components.offer-brief',[
-            'offers'=>$brief->offer(),
+            'offers'=>$brief->offer()->get(),
             'brief'=>$brief
         ]);
     }
