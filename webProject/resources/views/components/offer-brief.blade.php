@@ -20,7 +20,7 @@
                 <div class="flex items-center lg:justify-center text-sm mt-4">
                     <img src="/images/laracast/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3 text-left">
-                        <h5 class="font-bold">{{$offers->name}}</h5>
+                        <h5 class="font-bold">{{$brief->offer->name}}</h5>
 
                     </div>
                 </div>
@@ -45,8 +45,7 @@
                 </div>
 
                 <h1 class="font-bold text-3xl lg:text-4xl mb-10">
-                       {{$offers->name}}
-{{-- di mh shaghala                   --}}
+                       {{$brief->offer->name}}
                 </h1>
 
                 <div class="space-y-4 lg:text-lg leading-loose">
@@ -56,24 +55,9 @@
         </article>
     </main>
 </section>
-<section class="col-span-8 col-start-5 mt-10">
-    <article class= "flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-4">
-        <div >
-            <img src="https://i.pravatar.cc/60" alt="" width="60" height="60">
-        </div>
-        <div>
-            <header>
-                <h3 class="font-bold">
-                    <p class="text-xs">
-                        posted
-                        <time> 8 min ago</time>
-                    </p>
-                </h3>
-                hello there all my friends
-            </header>
-        </div>
+@foreach($brief->comments as $comment)
+    <x-comment :comment="$comment"/>
 
-    </article>
-</section>
+@endforeach
 </body>
 </x-layout>

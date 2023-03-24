@@ -12,7 +12,11 @@ class Brief extends Model
 
     public function offer()
     {
-        return $this->belongsTo(Offer::class,'offer_id');
+        return $this->belongsTo(Offer::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

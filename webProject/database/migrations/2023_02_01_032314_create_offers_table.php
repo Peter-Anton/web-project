@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->index();
             $table->string('description');
-            $table->foreignId('offer_category_id');
-            $table->foreignId('offer_company_id');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->integer('price');
             $table->string('photo');
             $table->timestamps();

@@ -38,14 +38,15 @@ class Offer extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'offer_category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
 
     public function company()
     {
-        return $this->belongsTo(Company::class, 'offer_company_id');
+        return $this->belongsTo(Company::class, 'company_id');
     }
+
 
     public function brief()
     {
