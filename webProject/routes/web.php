@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\OfferComment;
 use App\Http\Controllers\Registercontroller;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,7 @@ Route::get('/', [CrudController::class,'getGridView'])->name('home');
 Route::get('company/{company:name}',[CrudController::class,'getCompany'])->name('get-company');
 Route::get('category/{category:slug}',[CrudController::class,'getCategory'])->name('get-category');
 Route::get('brief/{brief:slug}',[CrudController::class,'getBrief'])->name('get-brief');
-
+Route::post('brief/{brief:slug}/comment',[OfferComment::class,'store'])->name('comment.store');
 
 
 Route::get('register',[Registercontroller::class,'create'])->name('register')->middleware('guest');

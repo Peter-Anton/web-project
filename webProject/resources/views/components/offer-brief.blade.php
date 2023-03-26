@@ -55,9 +55,19 @@
         </article>
     </main>
 </section>
+@auth()
+    <x-comment-form :brief="$brief"/>
+@else
+    <p class="font-semibold">Please
+        <a href="/login" class="text-blue-500">log in</a>
+        or
+        <a href="/register" class="text-blue-500">register</a>
+        to leave a comment.</p>
+@endauth
+
+
 @foreach($brief->comments as $comment)
     <x-comment :comment="$comment"/>
-
 @endforeach
 </body>
 </x-layout>
