@@ -1,72 +1,50 @@
-@extends('layouts.app')
-@section('content')
-    <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #6a11cb;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-        }
-    </style>
-    <div class="card-body " >
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-    <div class="container py-5 h-100">
+<x-layout>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+<section class="vh-200">
+    <div class="  mt-2">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
-
-                        <div class="mb-md-5 mt-md-4 pb-5">
-
-                            <h2 class="fw-bold mb-2 text-uppercase">{{ __('Login') }}</h2>
-                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
-
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typeEmailX">{{ __('Email Address') }}</label>
-                                        <div class="form-outline form-white mb-4">
-                                        <input type="email" id="typeEmailX" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typePasswordX">{{ __('Password') }}</label>
-                                        <div class="form-outline form-white mb-5">
-                                            <input type="password" id="typePasswordX" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"  />
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                        </div>
-                                    </div>
-                                    @if (Route::has('password.request'))
-                                        <p class="small mb-5 pb-lg-2">
-                                            <a class="text-white-50" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a></p>
-                                    @endif
-
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">{{ __('Login') }}</button>
-
-                                    <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                    </div>
-
-
-                            </div>
-                        </div>
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form method="post" action="{{ route('login') }}">
+                    @csrf
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="text-center fw-bold mx-3 mb-0">welcome back</p>
                     </div>
-                </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email" name="email" class="form-control form-control-lg"
+                               placeholder="Enter a valid email address" />
+                        <label class="form-label" for="email">Email address</label>
+                        @error('email')
+                        <p class="text-red-600 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <input type="password" id="password" name="password" class="form-control form-control-lg"
+                               placeholder="Enter password" />
+                        <label class="form-label" for="password">Password</label>
+                        @error('password')
+                        <p class="text-red-600 text-xs mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{route('register')}}"
+                                                                                          class="link-danger">Register</a></p>
+                    </div>
+
+                </form>
             </div>
         </div>
-        </form>
-@endsection
+    </div>
+</section>
+</x-layout>

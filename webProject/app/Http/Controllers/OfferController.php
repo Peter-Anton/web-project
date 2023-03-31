@@ -21,7 +21,8 @@ class OfferController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
-            'offer_category_id' => $request->offer_category_id,
+            'category_id' => $request->category_id,
+            'company_id' =>$request->company_id,
         ]);
         if ($offer) {
             return response()->json([

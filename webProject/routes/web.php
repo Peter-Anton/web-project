@@ -26,7 +26,6 @@ Route::group(['prefix'=>'/client'],function(){
     Route::post('delete',[App\Http\Controllers\OfferController::class, 'delete'])->name('offers.delete');
 });
 
-
 Route::group(['prefix'=>'/admin'],function(){
         Route::get('create', [App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
         Route::post('store', [App\Http\Controllers\OfferController::class, 'store'])->name('offers.store');

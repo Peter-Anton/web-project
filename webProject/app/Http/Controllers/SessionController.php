@@ -29,7 +29,7 @@ class SessionController extends Controller
 
 
     public function login(){
-        return view('sessions.login');
+        return view('auth.login');
     }
 
     public function destroy(){
