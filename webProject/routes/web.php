@@ -5,6 +5,7 @@ use App\Http\Controllers\OfferComment;
 use App\Http\Controllers\Registercontroller;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
+use MailchimpMarketing\ApiClient;
 
 Route::get('/', [CrudController::class,'getGridView'])->name('home');
 Route::get('company/{company:name}',[CrudController::class,'getCompany'])->name('get-company');
@@ -19,7 +20,24 @@ Route::post('logout',[SessionController::class,"destroy"])->name('logout')->midd
 Route::get('login',[SessionController::class,"login"])->name('login')->middleware('guest');
 Route::post('login',[SessionController::class,"store_login"])->name('login')->middleware('guest');
 
+Route::post('newsletter',function(){
+    request()->validate([
+        'email'=>'required|email'
 
+    ]);
+    $mailchimp = new ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us17'
+    ]);
+
+    $response = $mailchimp->lists->addListMember("4eb883d081",[
+        'email_address'=>request('email'),
+        'status'=>'subscribed'
+    ]);
+    return redirect('/')->with('success','you are subscribed successfully');
+})->name('newsletter');
 
 Route::group(['prefix'=>'/client'],function(){
     Route::get('all', [App\Http\Controllers\OfferController::class, 'getAlloffers'])->name('offers.all');
