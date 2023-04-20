@@ -5,7 +5,6 @@
         @if($offers->count())
             <x-offer-grid :offers="$offers"></x-offer-grid>
             {{ $offers->links()}}
-
         @else
             <p class="text-center">No offers yet. Please check back later.</p>
         @endif

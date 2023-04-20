@@ -3,7 +3,7 @@
    {{$attributes->merge(['class'=>'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl'])}} >
     <div class="py-8 px-30 lg:flex">
         <div class="flex-1 lg:mr-1 ">
-            <img src="{{asset('/images/offers/'.$offer->photo)}}"
+            <img src="{{asset('/storage'.$offer->photo)}}"
                  alt="Blog Post illustration"
                  class="rounded-xl w-400 h-200 "
             >

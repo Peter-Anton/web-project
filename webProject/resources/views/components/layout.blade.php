@@ -3,9 +3,9 @@
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 <style>
-    html{
+    html {
         scroll-behavior: smooth;
     }
 </style>
@@ -20,25 +20,29 @@
 
         <div class="mt-8 md:mt-0">
             @auth
-                <span  class="text-xs font-bold uppercase">welcome,{{auth()->user()->name}}</span>
+                <span class="text-xs font-bold uppercase">welcome,{{auth()->user()->name}}</span>
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
                     <button type="submit" class="text-xs font-bold uppercase text-blue">logout</button>
-                    </form>
+                </form>
 
             @else
-                <a href="{{ route('register') }}" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 ">register</a>
-                <a href="{{ route('login') }}" class=" ml-6 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 ">login</a>
+                <a href="{{ route('register') }}"
+                   class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 ">register</a>
+                <a href="{{ route('login') }}"
+                   class=" ml-6 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 ">login</a>
             @endauth
 
-            <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+            <a href="#newsletter"
+               class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates
             </a>
         </div>
     </nav>
     @yield('content')
     {{ $slot}}
-    <footer id ="newsletter" class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+    <footer id="newsletter"
+            class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
         <img src="/images/laracast/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
         <h5 class="text-3xl">Stay in touch with the latest posts</h5>
         <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
@@ -53,12 +57,18 @@
                                class="hidden lg:inline-block">
                             <img src="/images/laracast/mailbox-icon.svg" alt="mailbox letter">
                         </label>
-
-                        <input id="email"
-                               type="text"
-                               name="email"
-                               placeholder="Your email address"
-                               class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+                        <div>
+                            <input id="email"
+                                   type="text"
+                                   name="email"
+                                   placeholder="Your email address"
+                                   class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+                            @error('email')
+                            <span class="text-red text-xs">
+            {{$message}}
+            </span>
+                            @enderror
+                        </div>
                     </div>
 
                     <button type="submit"
@@ -70,7 +80,7 @@
             </div>
         </div>
     </footer>
-    <x-flash />
+    <x-flash/>
 </section>
 </body>
 

@@ -28,7 +28,8 @@ class OfferRequest extends FormRequest
             'price'=>'required|numeric',
             'description'=>'required',
             'photo'=>'required|mimes:png,jpg,jpeg',
-            'offer_category_id'=>'required|exists:offer_categories,id'
+            'category_id'=>'required',
+            'company_id'=>'required'
         ];
     }
     public function messages()
@@ -40,10 +41,8 @@ class OfferRequest extends FormRequest
             'price.numeric'=>'you must enter number',
             'description.required'=>'you must enter the name',
             'photo.required'=>'you must enter photo',
-            'offer_category_id.required'=>'you must enter the category',
-            'offer_category_id.exists'=>'the category doesnt exist',
+            'category_id.required'=>'you must enter the category',
+            'company_id.required'=>'you must enter the company',
                     ];
-
-
     }
 }

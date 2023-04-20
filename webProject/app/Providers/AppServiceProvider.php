@@ -2,28 +2,32 @@
 
 namespace App\Providers;
 
+use App\Api_Service\NewsLatter;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use MailchimpMarketing\ApiClient;
+use App\Api_Service\MailchimpNewsLatters;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        //
+        // if u want to add some dependencies that the class need to work
+        /* example:
+         * app()->bind('path.to.class', function () {});
+         * this function makes you play in the constructor of this function
+         * */
+        app()->bind(NewsLatter::class,function () {
+            $client=new ApiClient();
+            $client->setConfig([
+                'apiKey' => config('services.mailchimp.key'),
+                'server' => 'us17'
+            ]);
+            return new MailchimpNewsLatters($client);
+        });
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         Schema::defaultStringLength(191);

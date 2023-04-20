@@ -11,7 +11,7 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form method="POST"   ACTION="{{ route('register')}}">
+                                    <form method="POST"   ACTION="{{ route('stores')}}">
                                         @csrf
 
                                         <div class="d-flex flex-row align-items-center mb-4">

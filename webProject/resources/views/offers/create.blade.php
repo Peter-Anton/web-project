@@ -1,14 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-
+   <div class="ml-4 mt-lg-3 mb-lg-2 mr-4  border max-w-10 border-black-400 p-9 rounded-sm " style="background:white" >
+    <div class=" row-cols-m-4 ">
         <div class="alert alert-success" id="success_msg" style="display: none;">
       the offer has been saved successfully
         </div>
-
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md align-content-xl-center">
                     Add your offer
                 </div>
                 @if(Session::has('success'))
@@ -18,6 +17,7 @@
                 @endif
 
                 <br>
+
                 <form method="POST" id="offerForm" action="" enctype="multipart/form-data">
                     @csrf
 
@@ -52,16 +52,37 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1"> category_id </label>
-                        <input type="text" class="form-control" name="offer_category_id"
-                               placeholder="offer_category_id">
+{{--                        <label for="exampleInputPassword1"> category_id </label>--}}
+                        @php
+                            $categories = \App\Models\Category::all();
+                        @endphp
+                        <div>
+                            <label for="category" >category
+                            </label>
+                        </div>
+                        <select  name="category_id" id="category">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+
                         <small id="category_error" class="form-text text-danger"></small>
                     </div>
 
+
                     <div class="form-group">
-                        <label for="exampleInputPassword1"> company_id </label>
-                        <input type="text" class="form-control" name="offer_company_id"
-                               placeholder="offer_company_id">
+                        <div>
+                            <label for="exampleInputPassword1"> company_id </label>
+
+                        </div>
+                        @php
+                            $companies = \App\Models\Company::all();
+                        @endphp
+                        <select  name="company_id" id="company">
+                            @foreach($companies as $company)
+                                <option  value="{{$company->id}}">{{$company->name}}</option>
+                            @endforeach
+                        </select>
                         <small id="company_error" class="form-text text-danger"></small>
                     </div>
 
@@ -70,6 +91,7 @@
             </div>
         </div>
     </div>
+   </div>
 @stop
 
 @section('scripts')

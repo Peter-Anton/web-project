@@ -10,14 +10,16 @@ class SessionController extends Controller
     public function store_login(){
         $attributes=request()->validate([
             'email'=>'required|email|exists:users,email',
-            'password'=>'required|min:6|'
+            'password'=>'required|min:6'
         ]);
         if (auth()->attempt($attributes)){
            session()->regenerate();
             return redirect()->route('home')->with('success','you are logged in successfully');
         }
+//        dd($attributes);
         throw ValidationException::withMessages([
-            'email'=>'your provided credential could not be verified'
+            'email'=>'your provided credential could not be verified',
+            'password'=>'the password is incorrect'
         ]);
 
 
