@@ -18,13 +18,25 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0">
+        <div class="mt-8 md:mt-0 flex items-center">
             @auth
-                <span class="text-xs font-bold uppercase">welcome,{{auth()->user()->name}}</span>
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="text-xs font-bold uppercase text-blue">logout</button>
-                </form>
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button
+                            class="text-xs font-bold uppercase"> {{auth()->user()->name}}</button>
+                    </x-slot>
+                    <x-dropdown-items href="/admin/create" :active="request()->is('/admin/create')">New offer</x-dropdown-items>
+                    <x-dropdown-items href="/admin/all">offers</x-dropdown-items>
+                    <x-dropdown-items href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log out</x-dropdown-items>
+                    <form method="POST" action="{{ route('logout') }}" class="hidden" id="logout-form">
+                        @csrf
+                        <button type="submit" class="text-xs font-bold uppercase text-blue">logout</button>
+                    </form>
+                </x-dropdown>
+                <a href="#newsletter"
+                   class="uppercase bg-blue-500  rounded-full text-xs font-semibold text-white py-3 px-5 ml-4">
+                    Subscribe for Updates
+                </a>
 
             @else
                 <a href="{{ route('register') }}"
@@ -33,10 +45,7 @@
                    class=" ml-6 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 ">login</a>
             @endauth
 
-            <a href="#newsletter"
-               class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                Subscribe for Updates
-            </a>
+
         </div>
     </nav>
     @yield('content')

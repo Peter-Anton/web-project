@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.layout>
     @include('components.header')
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
 
@@ -9,4 +9,4 @@
             <p class="text-center">No offers yet. Please check back later.</p>
         @endif
     </main>
-</x-layout>
+</x-layouts.layout>

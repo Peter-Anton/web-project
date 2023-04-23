@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.layout>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <section class="vh-50" >
         <div class=" h-100 mt-20">
@@ -73,4 +73,4 @@
             </div>
         </div>
     </section>
-</x-layout>
+</x-layouts.layout>

@@ -1,66 +1,39 @@
-@extends('layouts.app')
-@section('content')
+<x-layouts.layout>
+        <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($offers as $offer)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="text-sm font-medium text-gray-900">
+                                                <a href="/brief/{{ $offer->name }}">
+                                                    {{ $offer->name }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="/admin/edit/{{ $offer->id }}" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                    </td>
 
-    <div class="alert alert-success" id="success_msg" style="display: none;">
-        the item has been delete successfully
-    </div>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <form method="POST" action="/admin/{{ $offer->id }}">
+                                            @csrf
+                                            @method('DELETE')
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">details</th>
-            <th scope="col">picture</th>
-            <th scope="col">operation</th>
-        </tr>
-        </thead>
-        <tbody>
-
-
-        @foreach($offers as $offer)
-
-
-            <tr class="offerRow{{$offer -> id}}">
-                <th scope="row">{{$offer -> id}}</th>
-                <td>{{$offer -> name}}</td>
-                <td>{{$offer -> price}}</td>
-                <td>{{$offer -> description}}</td>
-                <td><img  style="width: 120px; height: 120px;" src="{{asset('images/offers/'.$offer->photo)}}" alt=""></td>
-                <td>
-                    <a href="" offer_id1="{{$offer -> id}}"    class="delete_btn1 btn btn-danger"> delete</a>
-                </td>
-            </tr>
-        @endforeach
-
-        </tbody>
-    </table>
-
-@stop
-@section('scripts')
-    <script>
-        $(document).on('click', '.delete_btn1', function (e) {
-            e.preventDefault();
-            var offer_id = $(this).attr('offer_id1');
-            $.ajax({
-                type: 'post',
-                url: "{{route('offers.delete')}}",
-                data: {
-                    '_token': "{{csrf_token()}}",
-                    'id' :offer_id
-                },
-                success: function (data) {
-
-                    if(data.status === true){
-                        $('#success_msg').show();
-                    }
-                    $('.offerRow'+data.id).remove();
-                },
-
-                error: function (reject) {
-                }
-            });
-        });
-    </script>
-@stop
+                                            <button class="text-xs text-gray-400">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</x-layouts.layout>

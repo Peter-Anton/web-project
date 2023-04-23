@@ -21,7 +21,7 @@ class OfferController extends Controller
     public function store(OfferRequest $request)
     {
 //        $file_name = $this->saveImage($request->photo, 'images/offers');
-        $path=$request->file('photo')->store('offers-images');
+        $path=request()->file('photo')->store('public/images');
         $offer=Offer::query()->create([
             'photo' => $path,
             'name' => $request->name,
@@ -33,7 +33,7 @@ class OfferController extends Controller
         $brief=Brief::query()->create([
             'slug'=>$request->name,
             'title'=>$request->name,
-            'excerpt'=>$request->description ,
+            'excerpt'=>$request->excrept,
             'body'=>$request->description,
             'offer_id'=>$offer->id
         ]);
@@ -63,14 +63,13 @@ class OfferController extends Controller
         ]);
 
     }
+    public function edit(OfferRequest $offer){
+        return view("offers.edit",compact('offer'));
+
+    }
     public function getAlloffers()
     {
-        $offers = Offer::query()->select('id',
-            'name',
-            'price',
-            'description',
-            'photo'
-        )->get();
+        $offers = Offer::all();
         return view('offers.Offerview', compact('offers'));
     }
 }

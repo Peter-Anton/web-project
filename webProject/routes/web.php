@@ -24,13 +24,13 @@ Route::post('login', [SessionController::class, "store_login"])->name('login')->
 Route::post('newsletter',NewsLatterController::class)->name('newsletter');
 
 Route::group(['prefix' => '/client'], function () {
-    Route::get('all', [OfferController::class, 'getAlloffers'])->name('offers.all');
     Route::post('delete', [OfferController::class, 'delete'])->name('offers.delete');
 });
 
 Route::group(['prefix' => '/admin','middleware' => 'admin'], function () {
     Route::get('create', [OfferController::class, 'create'])->name('offers.create');
     Route::post('store', [OfferController::class, 'store'])->name('offers.store');
+    Route::get('all', [OfferController::class, 'getAlloffers'])->name('offers.all');
     Route::get('edit/{offer_id}', [OfferController::class, 'edit'])->name('offers.edit');
     });
 
