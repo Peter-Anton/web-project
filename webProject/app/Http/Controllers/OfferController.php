@@ -63,9 +63,9 @@ class OfferController extends Controller
         ]);
 
     }
-    public function edit(OfferRequest $offer){
-        return view("offers.edit",compact('offer'));
-
+    public function edit(Offer $offer){
+        $brief=Brief::query()->where('offer_id',$offer->id)->first();
+        return view("offers.edit",compact('offer','brief'));
     }
     public function getAlloffers()
     {
