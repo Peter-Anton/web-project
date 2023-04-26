@@ -50,23 +50,37 @@ class OfferController extends Controller
             ]);
 
     }
-    public function delete(Request $request)
+    public function delete(Offer $offer)
     {
-        $offer = Offer::query()->find($request->id);
-        if (!$offer)
-            return redirect()->back(['error'=>'the offer doesnt exist']);
         $offer->delete();
-        return response()->json([
-            'status' => true,
-            'msg' => 'the offer deleted successfully',
-            'id'=>$offer->id,
-        ]);
-
+    return redirect()->back()->with(['success'=>'the offer deleted successfully']);
     }
     public function edit(Offer $offer){
         $brief=Brief::query()->where('offer_id',$offer->id)->first();
         return view("offers.edit",compact('offer','brief'));
     }
+    public function update(Offer $offer){
+    $offer->update([
+            'name'=>request()->name,
+            'price'=>request()->price,
+            'description'=>request()->description,
+            'category_id'=>request()->category_id,
+            'company_id'=>request()->company_id,
+        ]);
+        $brief=Brief::query()->where('offer_id',$offer->id)->first();
+        $brief->update([
+            'slug'=>request()->name,
+            'title'=>request()->name,
+            'excerpt'=>request()->excrept,
+            'body'=>request()->description,
+        ]);
+            return response()->json([
+                'status' => true,
+                'msg' => 'the offer updated successfully',
+            ]);
+
+
+}
     public function getAlloffers()
     {
         $offers = Offer::all();

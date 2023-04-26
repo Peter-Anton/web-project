@@ -32,6 +32,8 @@ Route::group(['prefix' => '/admin','middleware' => 'admin'], function () {
     Route::post('store', [OfferController::class, 'store'])->name('offers.store');
     Route::get('all', [OfferController::class, 'getAlloffers'])->name('offers.all');
     Route::get('edit/{offer}', [OfferController::class, 'edit']);
+    Route::post('update/{offer}', [OfferController::class, 'update'])->name('offers.update');
+    Route::delete('delete/{offer}', [OfferController::class, 'delete'])->name('offers.delete');
     });
 
 
