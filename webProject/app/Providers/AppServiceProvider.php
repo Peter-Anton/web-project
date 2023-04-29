@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Api_Service\NewsLatter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use MailchimpMarketing\ApiClient;
@@ -33,5 +35,11 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 //        Paginator::useTailwind();  //you can change the style of pagination use this methode
         Model::unguard();
+        Gate::define('admin',function ($user){
+           return $user->name=='peter anton naguib';
+        });
+        Blade::if('admin',function (){
+            return request()->user()?->can('admin');
+        });
     }
 }

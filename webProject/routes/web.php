@@ -23,7 +23,8 @@ Route::post('login', [SessionController::class, "store_login"])->name('login')->
 
 Route::post('newsletter', NewsLatterController::class)->name('newsletter');
 
-Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => '/admin','middleware' => 'can:admin'], function () {
+//    Route::resource('/admin',OfferController::class)->except('show');
     Route::get('create', [OfferController::class, 'create'])->name('offers.create');
     Route::post('store', [OfferController::class, 'store'])->name('offers.store');
     Route::get('all', [OfferController::class, 'getAlloffers'])->name('offers.all');
