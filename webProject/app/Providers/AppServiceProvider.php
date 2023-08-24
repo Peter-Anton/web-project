@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
 //        Paginator::useTailwind();  //you can change the style of pagination use this methode
         Model::unguard();
         Gate::define('admin',function ($user){
-           return $user->name=='peter anton naguib';
+            return $user->name=='peter anton';
         });
         Blade::if('admin',function (){
             return request()->user()?->can('admin');
