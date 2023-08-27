@@ -7,7 +7,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\Registercontroller;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SystemUsrContoller;
 Route::get('/', [CrudController::class, 'getGridView'])->name('home');
 Route::get('company/{company:name}', [CrudController::class, 'getCompany'])->name('get-company');
 Route::get('category/{category:slug}', [CrudController::class, 'getCategory'])->name('get-category');
@@ -31,6 +31,11 @@ Route::group(['prefix' => '/admin','middleware' => 'can:admin'], function () {
     Route::get('edit/{offer}', [OfferController::class, 'edit']);
     Route::post('update/{offer}', [OfferController::class, 'update'])->name('offers.update');
     Route::delete('delete/{offer}', [OfferController::class, 'delete'])->name('offers.delete');
+});
+Route::group(['prefix'=>'/systemUser','middleware' => 'can:systemUser'],function (){
+Route::get('create',[SystemUsrContoller::class,'create'])->name('systemUser.create');
+Route::post('store',[SystemUsrContoller::class,'store'])->name('systemUser.store');
+
 });
 
 

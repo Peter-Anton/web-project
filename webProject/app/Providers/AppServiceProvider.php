@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Api_Service\NewsLatter;
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
@@ -35,11 +36,14 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 //        Paginator::useTailwind();  //you can change the style of pagination use this methode
         Model::unguard();
-        Gate::define('admin',function ($user){
+        Gate::define('systemUsr',function ($user){
             return $user->name=='peter anton';
         });
-        Blade::if('admin',function (){
-            return request()->user()?->can('admin');
+        Gate::define('admin',function ($admin){
+
+        });
+        Blade::if('systemUsr',function (){
+            return request()->user()?->can('SystemUsr');
         });
     }
 }

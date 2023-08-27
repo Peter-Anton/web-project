@@ -18,7 +18,7 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0 flex items-center">
+        <div class="mt-8 md:mt-0 flex items-center width:max-content">
             @auth
                 <x-dropdown>
                     <x-slot name="trigger">
@@ -28,8 +28,10 @@
                     @admin
                     <x-dropdown-items href="/admin/create" :active="request()->is('/admin/create')">New offer</x-dropdown-items>
                     <x-dropdown-items href="/admin/all">offers</x-dropdown-items>
+
                     @endadmin
                     <x-dropdown-items href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log out</x-dropdown-items>
+                    <x-dropdown-items> hello world</x-dropdown-items>
                     <form method="POST" action="{{ route('logout') }}" class="hidden" id="logout-form">
                         @csrf
                         <button type="submit" class="text-xs font-bold uppercase text-blue">logout</button>
