@@ -32,10 +32,10 @@ Route::group(['prefix' => '/admin','middleware' => 'can:admin'], function () {
     Route::post('update/{offer}', [OfferController::class, 'update'])->name('offers.update');
     Route::delete('delete/{offer}', [OfferController::class, 'delete'])->name('offers.delete');
 });
-Route::group(['prefix'=>'/systemUser','middleware' => 'can:systemUser'],function (){
-Route::get('create',[SystemUsrContoller::class,'create'])->name('systemUser.create');
-Route::post('store',[SystemUsrContoller::class,'store'])->name('systemUser.store');
-
+Route::group(['prefix'=>'/systemUser','middleware' => 'can:systemUsr'],function (){
+Route::get('all',[SystemUsrContoller::class,'getAllUser'])->name('systemUser.all');
+Route::post('makeAdmin/{user}',[SystemUsrContoller::class,'makeAdmin'])->name('systemUser.makeAdmin');
+Route::delete('delete/{user}',[SystemUsrContoller::class,'delete'])->name('systemUser.delete');
 });
 
 

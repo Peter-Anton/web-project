@@ -19,7 +19,7 @@ class AdminFactory extends Factory
         return [
             'name'=>$this->faker->name(),
             'email'=>$this->faker->unique()->safeEmail(),
-            'password'=>'$2y$10$RlWNjMOsp4Vg5ZNZHOENT.Xc0NMwL2jJP6RVUho2NyhAUBCpyyqTa',
+            'password'=>bcrypt('12345678'),
         ];
     }
 }

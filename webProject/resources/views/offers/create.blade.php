@@ -1,14 +1,16 @@
 @extends('components.layouts.app')
 @section('content')
+
     <div class="ml-4 mt-lg-3 mb-lg-2 mr-4  border max-w-10 border-black-400 p-9 rounded-sm " style="background:white">
         <div class=" row-cols-m-4 ">
             <div class="alert alert-success" id="success_msg" style="display: none;">
                 the offer has been saved successfully
             </div>
-            <div class="flex-center position-ref full-height">
-                <div class="content">
-                    <div class="title m-b-md align-content-xl-center">
-                        Add your offer
+            <div class="flex-center  h-full w-full">
+                <div class="">
+                    <div class="title m-b-md center ">
+                        <h5 style="text-align: center;font-family: 'Dancing Script', cursive">Add your offer</h5>
+
                     </div>
                     @if(Session::has('success'))
                         <div class="alert alert-success" role="alert">

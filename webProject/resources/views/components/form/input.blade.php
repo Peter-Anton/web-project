@@ -1,5 +1,5 @@
 @props(['name','id'])
-<div class=" border border-gray-200 p-3 w-full rounded">
+<div class=" border border-gray-200 p-3 w-full rounded "style="margin-bottom: 20px">
     <label for="exampleInputEmail1"> {{$name}} </label>
     <input  class="form-control" name={{$name}}
            placeholder="Offer {{$name}}"

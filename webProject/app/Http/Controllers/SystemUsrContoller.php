@@ -2,34 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
-use Illuminate\Http\Request;
+
+use App\Models\User;
 
 class SystemUsrContoller extends Controller
 {
-    public function create(){
-        return view('systemUser.create');
+    public function getAllUser()
+    {
+
+        $users = User::all();
+        return view('SystemUser.UserView', compact('users'));
     }
-    public function store(Request $request){
-        $admin=Admin::query()->create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>$request->password,
+    public function makeAdmin(User $user){
+        $user->update([
+            'role'=>'admin'
         ]);
-        if ($admin) {
-            return response()->json([
-                'status' => true,
-                'msg' => 'the admin added successfully',
-            ]);
-        }
-        else
-            return response()->json([
-                'status'=>false,
-                'msg'=>'the admin can not be added'
-            ]);
-
+        return redirect()->back()->with(['success'=>'the user is now admin']);
     }
-
+    public function delete(User $user){
+        $user->delete();
+        return redirect()->back()->with(['success'=>'the user is now deleted']);
+    }
 
 
 }

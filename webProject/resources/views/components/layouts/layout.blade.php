@@ -28,10 +28,11 @@
                     @admin
                     <x-dropdown-items href="/admin/create" :active="request()->is('/admin/create')">New offer</x-dropdown-items>
                     <x-dropdown-items href="/admin/all">offers</x-dropdown-items>
-
                     @endadmin
+                    @can('systemUsr')
+                        <x-dropdown-items href="/systemUser/all" :active="request()->is('/systemUser/all')"> admins</x-dropdown-items>
+                    @endcan
                     <x-dropdown-items href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log out</x-dropdown-items>
-                    <x-dropdown-items> hello world</x-dropdown-items>
                     <form method="POST" action="{{ route('logout') }}" class="hidden" id="logout-form">
                         @csrf
                         <button type="submit" class="text-xs font-bold uppercase text-blue">logout</button>
