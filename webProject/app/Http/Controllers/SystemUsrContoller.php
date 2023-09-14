@@ -24,5 +24,4 @@ class SystemUsrContoller extends Controller
         return redirect()->back()->with(['success'=>'the user is now deleted']);
     }
 
-
 }

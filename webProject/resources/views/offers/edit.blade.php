@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <br>
-                        <x-settings :heading="'Edit Post: ' . $offer->name">
+                        <x-settings :heading="'Edit Post: ' . $offer->name"></x-settings>
                     <form method="POST" id="offerFormedit" action="" enctype="multipart/form-data">
                         @csrf
                         <x-form.input name="name" id="name_error" :value="old('name',$offer->name)"/>

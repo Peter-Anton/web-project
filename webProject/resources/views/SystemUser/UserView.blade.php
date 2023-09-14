@@ -27,7 +27,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <form method="POST" action="/systemUser/makeAdmin/{{ $user->id }}">
                                         @csrf
-                                        <button class="text-xs text-blue-400">make user </button>
+                                        <button class="text-xs text-blue-400">make admin </button>
                                     </form>
                                 </td>
                             </tr>
